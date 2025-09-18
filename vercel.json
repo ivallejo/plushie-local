@@ -17,7 +17,7 @@
     }
   ],
   "env": {
-    "OPENAI_API_KEY": "@openai_api_key",
-    "ASSISTANT_ID": "@assistant_id"
+    "OPENAI_API_KEY": "tu_openai_api_key_aqui",
+    "ASSISTANT_ID": "tu_assistant_id_aqui"
   }
 }
