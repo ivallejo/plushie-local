@@ -19,26 +19,62 @@
 
 ## 🚀 Inicio Rápido
 
-### **Paso 1: Configurar variables de entorno**
-```bash
-# Copiar archivo de configuración local
-cp .env.local .env
+### **Opción A: PostgreSQL (Recomendado para desarrollo completo)**
 
-# Editar con tu clave de OpenAI (opcional)
-nano .env.local
+#### **Paso 1: Configurar PostgreSQL**
+```bash
+# Instala PostgreSQL en tu sistema
+# macOS con Homebrew:
+brew install postgresql
+brew services start postgresql
+
+# Crear base de datos
+createdb ai_assistant
+
+# Crear usuario (opcional)
+createuser -P ai_user
+# Ingresa password cuando se solicite
 ```
 
-### **Paso 2: Ejecutar todo automáticamente**
+#### **Paso 2: Configurar variables de entorno**
 ```bash
-# Un solo comando para todo
-python3 run_local.py
+# Editar .env.local con tus credenciales de PostgreSQL
+nano .env.local
+
+# Ejemplo de configuración:
+DATABASE_URL=postgresql://ai_user:tu_password@localhost:5432/ai_assistant
+OPENAI_API_KEY=tu_clave_de_openai_aqui
+ASSISTANT_ID=tu_assistant_id_aqui
+```
+
+#### **Paso 3: Probar conexión**
+```bash
+# Probar conexión a PostgreSQL
+python3 test_postgres_connection.py
+```
+
+#### **Paso 4: Inicializar base de datos**
+```bash
+# Crear tablas automáticamente
+python3 init_db.py
+```
+
+#### **Paso 5: Iniciar API**
+```bash
+# Iniciar la API
+python3 api/__init__.py
+```
+
+### **Opción B: Inicio simplificado (sin PostgreSQL)**
+```bash
+# La API funcionará con memoria temporal
+python3 api/__init__.py
 ```
 
 ### **Paso 3: ¡Listo!**
 ```
 🌐 API: http://localhost:8000
-📊 PostgreSQL: localhost:5432
-🗄️ PgAdmin: http://localhost:8080
+📖 Docs: http://localhost:8000/docs
 ```
 
 ## 🛠️ Configuración Manual (Paso a Paso)
