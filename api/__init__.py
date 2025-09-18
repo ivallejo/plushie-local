@@ -3,13 +3,14 @@ from pydantic import BaseModel
 from fastapi import Body
 import openai
 import gtts
-import numpy as np
-import soundfile as sf
 import io
 import asyncio
 import json
 from typing import Optional, Dict, Any
 import os
+import whisper
+import numpy as np
+import soundfile as sf
 
 # Configurar OpenAI
 client = openai.AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
@@ -119,9 +120,15 @@ def get_device_info(device_id: str):
 async def process_audio(audio_data: bytes, session_id: str = "default_session"):
     """Procesar audio con Whisper y OpenAI"""
     try:
-        # STT con Whisper (simplificado para Vercel)
-        # En producción, usar Whisper API o servicio externo
-        texto = "Hola, ¿cómo estás?"  # Placeholder
+        # STT con Whisper
+        audio_io = io.BytesIO(audio_data)
+        audio, sr = sf.read(audio_io)
+        audio = np.array(audio, dtype=np.float32)
+
+        # Cargar modelo Whisper (se cachea automáticamente)
+        model = whisper.load_model("tiny")
+        result = model.transcribe(audio, language="es")
+        texto = result["text"]
 
         # Obtener información del dispositivo y usuario
         device_info = get_device_info(session_id)

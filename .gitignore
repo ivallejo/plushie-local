@@ -183,10 +183,11 @@ Thumbs.db
 ehthumbs.db
 Desktop.ini
 
-# Archivos de Vercel locales
+# Archivos de despliegue
 .vercel/
+.railway/
 
-# Node modules (por si se usa Vercel CLI)
+# Node modules (para CLIs)
 node_modules/
 
 # Archivos de ESP32 compilados
@@ -199,3 +200,6 @@ node_modules/
 *.bak
 *.backup
 *.old
+
+# Railway specific (comentar si necesitas commitear)
+# railway.json
