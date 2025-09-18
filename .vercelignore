@@ -1,0 +1,26 @@
+# Archivos locales que no se necesitan en Vercel
+*.mp3
+*.wav
+*.db
+*.onnx
+*.json
+cache.db
+test_*
+response_*
+*.pyc
+__pycache__/
+*.log
+
+# Archivos de desarrollo
+.env
+README.md
+database_setup.md
+deployment_guide.md
+session_management.md
+*.ino
+test_generate_audio.py
+
+# Mantener solo archivos necesarios para Vercel
+!api/
+!requirements.txt
+!vercel.json
