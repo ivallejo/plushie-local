@@ -5,7 +5,8 @@
       "src": "api/__init__.py",
       "use": "@vercel/python",
       "config": {
-        "maxLambdaSize": "50mb"
+        "maxLambdaSize": "50mb",
+        "maxDuration": 30
       }
     }
   ],
@@ -15,11 +16,6 @@
       "dest": "api/__init__.py"
     }
   ],
-  "functions": {
-    "api/__init__.py": {
-      "maxDuration": 30
-    }
-  },
   "env": {
     "OPENAI_API_KEY": "@openai_api_key",
     "ASSISTANT_ID": "@assistant_id"
