@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: ai-assistant-api
+    runtime: python3
+    buildCommand: pip install -r requirements.txt
+    startCommand: python api/__init__.py
+    envVars:
+      - key: OPENAI_API_KEY
+        value: sk-proj-tu_clave_de_openai_aqui
+      - key: ASSISTANT_ID
+        value: asst_tu_assistant_id_aqui
+      - fromSecret: database_url
+
+  - type: pserv
+    name: ai-assistant-db
+    runtime: postgres
+    ipAllowList: []  # Solo permite conexiones desde tu web service

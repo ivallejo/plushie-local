@@ -203,3 +203,6 @@ node_modules/
 
 # Railway specific (comentar si necesitas commitear)
 # railway.json
+
+# Render specific (comentar si necesitas commitear)
+# render.yaml
