@@ -1,7 +1,7 @@
 fastapi==0.104.1
 uvicorn[standard]==0.24.0
 openai==1.107.3
-whisper-openai==20240930
+openai-whisper>=20231117
 gtts==2.5.1
 numpy==2.2.6
 soundfile==0.13.1
